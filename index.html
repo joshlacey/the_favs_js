@@ -7,13 +7,22 @@
   </head>
   <body>
     <div class="container">
+      <!--login-->
+      <!--add restaurant-->
+      <form id='new-restaurant-form'>
+        <input id="newRestName" type="text" placeholder="Restaurant Name">
+        <input id="newRestAddress" type="text" placeholder="Restaurant Address">
+        <button class ="fancy" type="submit">Add Restaurant</button>
+      </form>
+
       <div class="top-banner"><h1>Create Your Own Fave?</h1>
         <button id="yes" class="fancy">Yes</button><button id="no" class="fancy">No</button>
       </div>
 
 
 
-      <div id='map'>
+
+      <div id='mapDiv'>
       </div>
       <!-- <div id="new-note-container">
         <form id="new-note-form">
@@ -27,7 +36,7 @@
     </div>
 
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwOjJZDj2crW4iDzpDOxOhcmbc0TpLdMs&callback=initGeocoder">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwOjJZDj2crW4iDzpDOxOhcmbc0TpLdMs&callback=init">
     </script>
     <script type="text/javascript" src="src/components/map.js"></script>
     <script type="text/javascript" src="src/adapters/restaurantsAdapter.js"></script>

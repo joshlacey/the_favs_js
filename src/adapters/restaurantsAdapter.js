@@ -3,7 +3,7 @@ class RestaurantsAdapter {
     this.baseUrl = 'http://localhost:3000/api/v1/restaurants'
   }
 
-  getRestaurants() {
+  getRestaurants(callback) {
     return fetch(this.baseUrl).then(response => response.json())
   }
 

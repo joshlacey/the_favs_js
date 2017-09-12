@@ -4,13 +4,18 @@ class Restaurant {
     this.address = obj.address,
     this.image = obj.image_url
     this.description = obj.description
-    this.list_of_dishes = []
-    this.lat = obj.lat
-    this.lng = obj.lng
+    this.list_of_dishes = obj.list_of_dishes
+    this.lat = obj.latitude
+    this.lng = obj.longitude
   }
 
-  addDish () {
+  addDish (dish) {
+
     // add dish to bubble
+
+    //update the database
+
+    
   }
 }
 

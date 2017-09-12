@@ -1,6 +1,6 @@
 .container{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: minmax(200px, auto);
   grid-gap: 1em;
 }
@@ -31,7 +31,7 @@ h1 {
   color: black;
 }
 
-.top-banner {
+/*.top-banner {
   grid-column: 1/4;
   grid-rows: 1;
 }
@@ -39,4 +39,4 @@ h1 {
 #map {
   grid-column: 1/4;
   grid-row: 2/4;
-}
+}*/
