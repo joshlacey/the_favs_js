@@ -24,16 +24,7 @@ class Map {
         center: uluru
       })
       //loop over and initialize the markers and add eventlisteners to each one.
-      restaurants.forEach(rest => {
-            let marker;
-            let infowindow = new google.maps.InfoWindow({content: `${rest.name}`})
-            marker = new google.maps.Marker({
-                position: {lat: rest.lat ,lng: rest.lng},
-                map: googleMap,
-                url: ""
-              });
-       marker.addListener('click', function() { infowindow.open(googleMap, marker) })
-      })
+      restaurants.forEach(rest => this.renderOnMap(rest))
   }
 
   addNewRestaurant(address, image_url, description, list_of_dishes) {
@@ -44,6 +35,17 @@ class Map {
       restarant = new Restaurant(foundAddress, image_url, description, lat, lng)
       renderOnMap(lat, lng)
     })
+  }
+
+  renderOnMap(rest){
+        let marker;
+        let infowindow = new google.maps.InfoWindow({content: `${rest.name}`})
+        marker = new google.maps.Marker({
+            position: {lat: rest.lat ,lng: rest.lng},
+            map: googleMap,
+            url: ""
+          });
+   marker.addListener('click', function() { infowindow.open(googleMap, marker) })
   }
 
 }
