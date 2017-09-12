@@ -1,0 +1,42 @@
+.container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  grid-gap: 1em;
+}
+
+.container > div {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+button.fancy {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  margin: 0 1em;
+}
+
+button.fancy:hover {
+  background-color: grey;
+  cursor: pointer;
+}
+
+h1 {
+  color: black;
+}
+
+.top-banner {
+  grid-column: 1/4;
+  grid-rows: 1;
+}
+
+#map {
+  grid-column: 1/4;
+  grid-row: 2/4;
+}

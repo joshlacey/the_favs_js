@@ -1,0 +1,17 @@
+class Restaurant {
+  constructor (obj) {
+    this.name = obj.name
+    this.address = obj.address,
+    this.image = obj.image_url
+    this.description = obj.description
+    this.list_of_dishes = []
+    this.lat = obj.lat
+    this.lng = obj.lng
+  }
+
+  addDish () {
+    // add dish to bubble
+  }
+}
+
+let red_lob = {name: "red lobster", address: "as;dlfkjas;ldfkj", image_url: "asdl;fasdf", description: "tasty", lat: 40, lng: -70}

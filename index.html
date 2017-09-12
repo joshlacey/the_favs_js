@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample JS Project frontend</title>
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-banner"><h1>Create Your Own Fave?</h1>
+        <button id="yes" class="fancy">Yes</button><button id="no" class="fancy">No</button>
+      </div>
+
+
+
+      <div id='map'>
+      </div>
+      <!-- <div id="new-note-container">
+        <form id="new-note-form">
+          <input type="text" name="note-body" id="new-note-body">
+          <input type="submit" value="Save note">
+        </form>
+      </div>
+      <div id="notes-container">
+
+      </div> -->
+    </div>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwOjJZDj2crW4iDzpDOxOhcmbc0TpLdMs&callback=initGeocoder">
+    </script>
+    <script type="text/javascript" src="src/components/map.js"></script>
+    <script type="text/javascript" src="src/adapters/restaurantsAdapter.js"></script>
+    <script type="text/javascript" src="src/adapters/usersAdapter.js"></script>
+    <script type="text/javascript" src="src/components/restaurant.js"></script>
+    <script type="text/javascript" src="src/components/app.js"></script>
+    <script type="text/javascript" src="src/index.js"></script>
+  </body>
+</html>
