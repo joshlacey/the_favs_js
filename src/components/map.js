@@ -15,10 +15,21 @@ class Map {
   }
 
   deleteRestaurant(restId, event){
+    //fix the delete marker function, maybe re-render map
+    this.setMapOnAll(null)
     this.adapter.deleteRestaurant(restId)
-    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+    markerArray = []
+
+
     alert("Restaurant deleted!")
   }
+
+  setMapOnAll(map) {
+    for (let i=0; i< markerArray.length; i++){
+      markerArray[i].setMap(map)
+    }
+  }
+
 
   addRestaurant() {
     event.preventDefault()
@@ -68,6 +79,7 @@ class Map {
             map: googleMap,
           });
           marker.addListener('click', function() { infowindow.open(googleMap, marker) })
+          markerArray.push(marker)
   }
 
 

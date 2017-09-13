@@ -26,7 +26,6 @@ class RestaurantsAdapter {
       },
       body: JSON.stringify(restaurant)
     }
-    debugger
     return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json())
   }
 
