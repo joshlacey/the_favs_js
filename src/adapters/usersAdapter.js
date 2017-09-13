@@ -29,4 +29,8 @@ class UsersAdapter {
     return fetch(this.baseUrl, userCreateParams).then(resp => resp.json())
   }
 
+  addUserRestaurant(body) {
+    
+  }
+
 }

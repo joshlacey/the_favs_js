@@ -26,7 +26,7 @@ class RestaurantsAdapter {
       },
       body: JSON.stringify(restaurant)
     }
-    return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json())
+    return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json()).then((json) => {app.map.renderOnMap(json)})
   }
 
 }
