@@ -14,10 +14,7 @@ class Restaurant {
   addDish (dish) {
     this.list_of_dishes.push(dish)
     // add dish to bubble
-
     //update the database
-
-
   }
 }
 
