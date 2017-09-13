@@ -21,14 +21,13 @@ class Map {
     return new google.maps.Geocoder();
   }
 
-  deleteRestaurant(restId, event){
+  deleteRestaurant(restId){
     //fix the delete marker function, maybe re-render map
     this.setMapOnAll(null)
-    this.adapter.deleteRestaurant(restId)
     markerArray = []
-    this.fetchAndLoadMarkers()
-
-
+    this.adapter.deleteRestaurant(restId)
+    this.restaurants= []
+    
     alert("Restaurant deleted!")
   }
 
@@ -61,7 +60,7 @@ class Map {
       this.adapter.getRestaurants()
       .then( restaurantsJSON => { restaurantsJSON.forEach( rest => { this.restaurants.push( new Restaurant(rest) )}) })
         .then(() =>{ this.initMap(this.restaurants) })
-        .catch( () => alert('asdfaThe server does not appear to be running') )
+        .catch( () => alert('The server does not appear to be running') )
     }
   }
 
@@ -79,16 +78,17 @@ class Map {
 
 
   renderOnMap(rest){
-    debugger
         let marker;
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${rest.restId} id="info_${rest.restId}" style="color: #000000; height: 300px">
-          <strong><p>${rest.name}</strong></p>
+          <h3>${rest.name}</h3>
           <p>Address: ${rest.address}</p>
           <button class="delete_restaurant">X</button>
           <form class="add-menu-item">
           <input data-id=${rest.restId} type="textbox" placeholder="Add your favorite menu item">
           <button type="submit">Submit</button>
+          <p><strong>List of Menu Items<p></strong>
+          <ul>${rest.list_of_dishes}</ul>
           `})
           marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},

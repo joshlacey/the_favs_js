@@ -4,8 +4,24 @@ class App {
     this.map = new Map()
     this.adapter = new UsersAdapter()
     this.initializeFunctions()
+    this.addEventListeners()
 
   }
+
+  addEventListeners(){
+    document.body.addEventListener('submit', function() {
+      event.preventDefault()
+      if (event.target.classList.contains("add-menu-item")){
+        let dish = event.target.firstElementChild.value
+        let rest = (app.map.restaurants.find((restaurant) => {
+          return restaurant.restId === parseInt(event.target.firstElementChild.dataset.id)
+        }))
+        rest.addDish(dish)
+      } else if (event.target.classList.contains("newRestaurantForm")) {
+          app.map.addRestaurant(event)
+      }
+    })
+}
 
   loadUsers() {
     this.adapter.getUsers()
@@ -15,8 +31,6 @@ class App {
   }
 
   initializeFunctions() {
-    let form = document.getElementById('new-restaurant-form')
-    form.addEventListener('submit', this.map.addRestaurant)
     let login = document.getElementById('login')
     login.addEventListener('submit', this.initializeMap)
     document.addEventListener('click', function() {
@@ -42,4 +56,5 @@ class App {
     }
   }
 
-}
+
+  }
