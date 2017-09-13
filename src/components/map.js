@@ -27,7 +27,8 @@ class Map {
     markerArray = []
     this.adapter.deleteRestaurant(restId)
     this.restaurants= []
-    
+    setTimeout(function(){
+      app.map.fetchAndLoadMarkers()}, 1000)
     alert("Restaurant deleted!")
   }
 
