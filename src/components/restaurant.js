@@ -5,8 +5,8 @@ class Restaurant {
     this.image = obj.image_url
     this.description = obj.description
     this.list_of_dishes = obj.list_of_dishes
-    this.lat = obj.latitude
-    this.lng = obj.longitude
+    this.latitude = obj.latitude
+    this.longitude = obj.longitude
   }
 
   addDish (dish) {
@@ -15,7 +15,7 @@ class Restaurant {
 
     //update the database
 
-    
+
   }
 }
 

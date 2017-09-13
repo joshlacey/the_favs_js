@@ -22,7 +22,7 @@ class Map {
         debugger
         let lat = results[0].geometry.location.lat()
         let lng = results[0].geometry.location.lng()
-        let restaurant = new Restaurant({name: name, address: foundAddress, lat: lat, lng: lng})
+        let restaurant = new Restaurant({name: name, address: foundAddress, latitude: lat, longitude: lng})
         app.map.renderOnMap(restaurant)
       })
     //let restaurant = new Restaurant({name: name, address: foundAddress})
@@ -57,7 +57,7 @@ class Map {
         let marker;
         let infowindow = new google.maps.InfoWindow({content: `${rest.name}`})
         marker = new google.maps.Marker({
-            position: {lat: rest.lat ,lng: rest.lng},
+            position: {lat: rest.latitude ,lng: rest.longitude},
             map: googleMap,
             url: ""
           });
