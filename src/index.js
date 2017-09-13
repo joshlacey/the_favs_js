@@ -1,6 +1,7 @@
 
 let googleMap
 
+let markerArray = []
 
 let app
 

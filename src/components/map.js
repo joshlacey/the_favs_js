@@ -1,14 +1,21 @@
 //create map instance and then
 
 class Map {
-  constructor () {
-    this.restaurants = []
+  constructor (user={}) {
+    this.user = user
+    if(user.email !== undefined){
+      this.restaurants = user.restaurants
+    } else {
+      this.restaurants = []
+    }
     //this.initBindingsAndEventListiners()
     this.adapter = new RestaurantsAdapter()
     //this.fetchAndLoadMarkers()
     this.geocoder = this.createGeoCoder()
 
   }
+
+
 
   createGeoCoder() {
     return new google.maps.Geocoder();
@@ -19,7 +26,6 @@ class Map {
     let name = event.target.children[0].value
     app.map.geocoder.geocode( { 'address': event.target.children[1].value }, function(results, status) {
         let foundAddress = results[0].formatted_address
-        debugger
         let lat = results[0].geometry.location.lat()
         let lng = results[0].geometry.location.lng()
         let restaurant = new Restaurant({name: name, address: foundAddress, latitude: lat, longitude: lng})
@@ -31,10 +37,14 @@ class Map {
   }
 
   fetchAndLoadMarkers() {
-    this.adapter.getRestaurants()
-    .then( restaurantsJSON => { restaurantsJSON.forEach( rest => this.restaurants.push( new Restaurant(rest) )) })
-      .then(() =>{ this.initMap(this.restaurants) })
-      .catch( () => alert('The server does not appear to be running') )
+    if(this.user.email){
+      this.initMap(this.restaurants)
+    } else {
+      this.adapter.getRestaurants()
+      .then( restaurantsJSON => { restaurantsJSON.forEach( rest => { this.restaurants.push( new Restaurant(rest) )}) })
+        .then(() =>{ this.initMap(this.restaurants) })
+        .catch( () => alert('asdfaThe server does not appear to be running') )
+    }
   }
 
   initMap(restaurants) {
@@ -58,12 +68,13 @@ class Map {
           <button class="delete_restaurant">X</button>
           <p>Address: ${rest.address}</p>
           `})
-        marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},
             map: googleMap,
             url: "",
           });
           marker.addListener('click', function() { infowindow.open(googleMap, marker) })
+          markerArray.push(marker)
   }
 
 
