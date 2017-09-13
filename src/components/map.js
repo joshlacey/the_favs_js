@@ -19,6 +19,7 @@ class Map {
     this.setMapOnAll(null)
     this.adapter.deleteRestaurant(restId)
     markerArray = []
+    this.fetchAndLoadMarkers()
 
 
     alert("Restaurant deleted!")
@@ -67,12 +68,16 @@ class Map {
 
 
   renderOnMap(rest){
+    debugger
         let marker;
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${rest.restId} id="info_${rest.restId}" style="color: #000000; height: 300px">
-          <h3>${rest.name}</h3>
-          <button class="delete_restaurant">X</button>
+          <strong><p>${rest.name}</strong></p>
           <p>Address: ${rest.address}</p>
+          <button class="delete_restaurant">X</button>
+          <form class="add-menu-item">
+          <input data-id=${rest.restId} type="textbox" placeholder="Add your favorite menu item">
+          <button type="submit">Submit</button>
           `})
         marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},
