@@ -6,13 +6,13 @@ class Restaurant {
     this.image = obj.image_url
     this.restId = obj.id
     this.description = obj.description
-    this.list_of_dishes = obj.list_of_dishes
+    this.list_of_dishes = obj.list_of_dishes || []
     this.latitude = obj.latitude
     this.longitude = obj.longitude
   }
 
   addDish (dish) {
-
+    this.list_of_dishes.push(dish)
     // add dish to bubble
 
     //update the database

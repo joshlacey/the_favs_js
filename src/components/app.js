@@ -41,4 +41,5 @@ class App {
       alert("Please enter your email")
     }
   }
+
 }
