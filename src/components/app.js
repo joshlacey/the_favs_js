@@ -6,5 +6,8 @@ class App {
   initializeFunctions() {
     let form = document.getElementById('new-restaurant-form')
     form.addEventListener('submit', this.map.addRestaurant)
+    document.addEventListener('click', function() {
+    if(event.target.classList.contains("delete_restaurant")) {alert("deleted!")}
+  })
   }
 }

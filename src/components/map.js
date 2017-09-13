@@ -49,16 +49,23 @@ class Map {
   }
 
 
+
   renderOnMap(rest){
         let marker;
-        let infowindow = new google.maps.InfoWindow({content: `${rest.name}`})
+        let infowindow = new google.maps.InfoWindow({
+          content: `<div id="info_${rest.restId}" style="color: #000000; height: 300px">
+          <h3>${rest.name}</h3>
+          <button class="delete_restaurant">X</button>
+          <p>Address: ${rest.address}</p>
+          `})
         marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},
             map: googleMap,
-            url: ""
+            url: "",
           });
-   marker.addListener('click', function() { infowindow.open(googleMap, marker) })
+          marker.addListener('click', function() { infowindow.open(googleMap, marker) })
   }
 
+
+
 }
-//initBindingsAndEventListeners

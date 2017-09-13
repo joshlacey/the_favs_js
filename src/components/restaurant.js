@@ -1,8 +1,12 @@
+let restCounter = 0
 class Restaurant {
+
   constructor (obj) {
     this.name = obj.name
     this.address = obj.address,
     this.image = obj.image_url
+    restCounter++
+    this.restId = restCounter
     this.description = obj.description
     this.list_of_dishes = obj.list_of_dishes
     this.latitude = obj.latitude
@@ -19,4 +23,4 @@ class Restaurant {
   }
 }
 
-let red_lob = {name: "red lobster", address: "as;dlfkjas;ldfkj", image_url: "asdl;fasdf", description: "tasty", lat: 40, lng: -70}
+let red_lob = {name: "red lobster", address: "as;dlfkjas;ldfkj", image_url: "asdl;fasdf", description: "tasty", latitude: 40, longitude: -70}
