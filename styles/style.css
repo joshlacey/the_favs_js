@@ -29,14 +29,13 @@ button.fancy:hover {
 
 h1 {
   color: black;
+
 }
 
-/*.top-banner {
-  grid-column: 1/4;
-  grid-rows: 1;
+.top-banner {
+  height: 200px;
 }
 
-#map {
-  grid-column: 1/4;
-  grid-row: 2/4;
-}*/
+#mapDiv {
+  grid-row: 1/3;
+}

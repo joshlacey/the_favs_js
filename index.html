@@ -6,14 +6,20 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
   </head>
   <body>
+    <form id='login'>
+      <input id="email" type="text" placeholder="email">
+      <button class ="fancy" type="submit">login</button>
+    </form>
+    <form id='new-restaurant-form'>
+      <input id="newRestName" type="text" placeholder="Restaurant Name">
+      <input id="newRestAddress" type="text" placeholder="Restaurant Address">
+      <button class ="fancy" type="submit">Add Restaurant</button>
+    </form>
     <div class="container">
       <!--login-->
       <!--add restaurant-->
-      <form id='new-restaurant-form'>
-        <input id="newRestName" type="text" placeholder="Restaurant Name">
-        <input id="newRestAddress" type="text" placeholder="Restaurant Address">
-        <button class ="fancy" type="submit">Add Restaurant</button>
-      </form>
+      <div id='mapDiv'>
+      </div>
 
       <div class="top-banner"><h1>Create Your Own Fave?</h1>
         <button id="yes" class="fancy">Yes</button><button id="no" class="fancy">No</button>
@@ -22,8 +28,7 @@
 
 
 
-      <div id='mapDiv'>
-      </div>
+
       <!-- <div id="new-note-container">
         <form id="new-note-form">
           <input type="text" name="note-body" id="new-note-body">
@@ -41,6 +46,7 @@
     <script type="text/javascript" src="src/components/map.js"></script>
     <script type="text/javascript" src="src/adapters/restaurantsAdapter.js"></script>
     <script type="text/javascript" src="src/adapters/usersAdapter.js"></script>
+    <script type="text/javascript" src="src/components/user.js"></script>
     <script type="text/javascript" src="src/components/restaurant.js"></script>
     <script type="text/javascript" src="src/components/app.js"></script>
     <script type="text/javascript" src="src/index.js"></script>

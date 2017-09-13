@@ -1,14 +1,21 @@
 //create map instance and then
 
 class Map {
-  constructor () {
-    this.restaurants = []
+  constructor (user={}) {
+    this.user = user
+    if(user.email !== undefined){
+      this.restaurants = user.restaurants
+    } else {
+      this.restaurants = []
+    }
     //this.initBindingsAndEventListiners()
     this.adapter = new RestaurantsAdapter()
     //this.fetchAndLoadMarkers()
     this.geocoder = this.createGeoCoder()
 
   }
+
+
 
   createGeoCoder() {
     return new google.maps.Geocoder();
@@ -47,10 +54,14 @@ class Map {
   }
 
   fetchAndLoadMarkers() {
-    this.adapter.getRestaurants()
-    .then( restaurantsJSON => { restaurantsJSON.forEach( rest => this.restaurants.push( new Restaurant(rest) )) })
-      .then(() =>{ this.initMap(this.restaurants) })
-      .catch( () => alert('The server does not appear to be running') )
+    if(this.user.email){
+      this.initMap(this.restaurants)
+    } else {
+      this.adapter.getRestaurants()
+      .then( restaurantsJSON => { restaurantsJSON.forEach( rest => { this.restaurants.push( new Restaurant(rest) )}) })
+        .then(() =>{ this.initMap(this.restaurants) })
+        .catch( () => alert('asdfaThe server does not appear to be running') )
+    }
   }
 
   initMap(restaurants) {
@@ -74,7 +85,7 @@ class Map {
           <button class="delete_restaurant">X</button>
           <p>Address: ${rest.address}</p>
           `})
-        marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},
             map: googleMap,
           });
