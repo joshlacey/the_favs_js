@@ -24,15 +24,11 @@ class Map {
         let lng = results[0].geometry.location.lng()
         let restaurant = new Restaurant({name: name, address: foundAddress, latitude: lat, longitude: lng})
         app.map.renderOnMap(restaurant)
+        app.map.adapter.createRestaurant(restaurant)
+        //try to figure out what's going on here
       })
     //let restaurant = new Restaurant({name: name, address: foundAddress})
   }
-
-  geocode() {
-
-  }
-
-
 
   fetchAndLoadMarkers() {
     this.adapter.getRestaurants()

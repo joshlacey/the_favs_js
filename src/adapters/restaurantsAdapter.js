@@ -18,14 +18,15 @@ class RestaurantsAdapter {
   //   return fetch(deleteUrl, noteDeleteParams).then(response => response.json())
   // }
 
-  createRestaurant(body) {
+  createRestaurant(restaurant) {
     const RestaurantCreateParams = {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
       },
-      body: JSON.stringify({body})
+      body: JSON.stringify(restaurant)
     }
+    debugger
     return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json())
   }
 
