@@ -14,12 +14,17 @@ class Map {
     return new google.maps.Geocoder();
   }
 
+  deleteRestaurant(restId, event){
+    this.adapter.deleteRestaurant(restId)
+    event.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+    alert("Restaurant deleted!")
+  }
+
   addRestaurant() {
     event.preventDefault()
     let name = event.target.children[0].value
     app.map.geocoder.geocode( { 'address': event.target.children[1].value }, function(results, status) {
         let foundAddress = results[0].formatted_address
-        debugger
         let lat = results[0].geometry.location.lat()
         let lng = results[0].geometry.location.lng()
         let restaurant = new Restaurant({name: name, address: foundAddress, latitude: lat, longitude: lng})
@@ -53,7 +58,7 @@ class Map {
   renderOnMap(rest){
         let marker;
         let infowindow = new google.maps.InfoWindow({
-          content: `<div id="info_${rest.restId}" style="color: #000000; height: 300px">
+          content: `<div data-rest_id = ${rest.restId} id="info_${rest.restId}" style="color: #000000; height: 300px">
           <h3>${rest.name}</h3>
           <button class="delete_restaurant">X</button>
           <p>Address: ${rest.address}</p>
@@ -61,7 +66,6 @@ class Map {
         marker = new google.maps.Marker({
             position: {lat: rest.latitude ,lng: rest.longitude},
             map: googleMap,
-            url: "",
           });
           marker.addListener('click', function() { infowindow.open(googleMap, marker) })
   }

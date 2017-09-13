@@ -1,12 +1,10 @@
-let restCounter = 0
 class Restaurant {
 
   constructor (obj) {
     this.name = obj.name
     this.address = obj.address,
     this.image = obj.image_url
-    restCounter++
-    this.restId = restCounter
+    this.restId = obj.id
     this.description = obj.description
     this.list_of_dishes = obj.list_of_dishes
     this.latitude = obj.latitude
