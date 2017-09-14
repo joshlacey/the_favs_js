@@ -24,8 +24,21 @@ class UsersAdapter {
       })
   }
 
-  addUserRestaurant(body) {
-
+  getUser(userId) {
+    return fetch(this.baseUrl + "/" + userId).then(resp => resp.json())
   }
 
+  updateUser(userId, body) {
+    const userUpdateParams = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }
+  return fetch(`${this.baseURL}/${userId}`, userUpdateParams).then(resp => resp.json())
+  .then(resp => {
+    debugger
+  })
+}
 }
