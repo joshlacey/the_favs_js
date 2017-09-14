@@ -19,6 +19,8 @@ class App {
         rest.addDish(dish)
       } else if (event.target.classList.contains("newRestaurantForm")) {
           app.map.addRestaurant(event)
+      } else if (event.target.classList.contains("delete-dish")){
+        restaurant.deleteDish(event)
       }
     })
 }

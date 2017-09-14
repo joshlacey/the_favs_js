@@ -15,9 +15,18 @@ class Restaurant {
     let adapter = new DishesAdapter()
     this.list_of_dishes.push(dish)
     adapter.createDish(dish, this.restId)
-    app.map.fetchAndLoadMarkers
+    setTimeout(() => {
+      this.resetMap()
+    }, 500)
     // add dish to bubble
     //update the database
+  }
+
+  resetMap(){
+    app.map.setMapOnAll(null)
+    markerArray = []
+    app.map.restaurants = []
+    app.map.fetchAndLoadMarkers()
   }
 
   renderDishes(){

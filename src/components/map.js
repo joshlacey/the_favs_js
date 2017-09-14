@@ -76,7 +76,7 @@ class Map {
           content: `<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" style="color: #000000; height: 300px">
           <strong><p>${restaurant.name}</strong></p>
           <p>Address: ${restaurant.address}</p>
-          <button class="delete_restaurant">X</button>
+          <button class="delete_restaurant">Delete Restaurant</button>
           <form class="add-menu-item">
           <input data-id=${restaurant.restId} type="textbox" placeholder="Add your favorite menu item">
           <button type="submit">Submit</button>
