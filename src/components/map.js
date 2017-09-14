@@ -32,7 +32,6 @@ class Map {
   }
 
   addRestaurant() {
-    event.preventDefault()
     let name = event.target.children[0].value
     app.map.geocoder.geocode( { 'address': event.target.children[1].value }, function(results, status) {
         let address = results[0].formatted_address
@@ -50,7 +49,7 @@ class Map {
     } else {
       this.adapter.getRestaurants()
         .then(restaurantsJSON => {restaurantsJSON.forEach(r => app.map.renderOnMap(r))})
-        .catch( () => alert('asdfaThe server does not appear to be running') )
+        .catch( () => alert('The server does not appear to be running') )
     }
   }
 
@@ -68,6 +67,10 @@ class Map {
   renderOnMap(rest){
         let restaurant = new Restaurant(rest)
         this.restaurants.push(restaurant)
+        let dishes = restaurant.renderDishes()
+        // let dishes = restaurant.list_of_dishes.forEach(function(dish){
+        //   dish.name
+        // })
         let marker;
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" style="color: #000000; height: 300px">
@@ -78,7 +81,7 @@ class Map {
           <input data-id=${restaurant.restId} type="textbox" placeholder="Add your favorite menu item">
           <button type="submit">Submit</button>
           <p><strong>List of Menu Items<p></strong>
-          <ul>${rest.list_of_dishes}</ul>
+          <ul>${dishes}</ul>
           `})
           marker = new google.maps.Marker({
             position: {lat: restaurant.latitude ,lng: restaurant.longitude},

@@ -1,11 +1,11 @@
-class UsersAdapter {
+class DishesAdapter {
   constructor() {
-    this.baseUrl = 'http://localhost:3000/api/v1/users'
+    this.baseUrl = 'http://localhost:3000/api/v1/dishes'
   }
 
-  getUsers() {
-    return fetch(this.baseUrl).then(response => response.json())
-  }
+  // getDishes() {
+  //   return fetch(this.baseUrl).then(response => response.json())
+  // }
 
   // deleteUser(noteId) {
   //   const deleteUrl = `${this.baseUrl}/${noteId}`
@@ -18,19 +18,16 @@ class UsersAdapter {
   //   return fetch(deleteUrl, noteDeleteParams).then(response => response.json())
   // }
 
-  createUser(body) {
-    const userCreateParams = {
+  createDish(name, restaurant_id) {
+    const dishCreateParams = {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
       },
-      body: JSON.stringify({body})
+      body: JSON.stringify({name, restaurant_id})
     }
-    return fetch(this.baseUrl, userCreateParams).then(resp => resp.json())
+    return fetch(this.baseUrl, dishCreateParams).then(resp => resp.json())
   }
 
-  addUserRestaurant(body) {
-
-  }
 
 }
