@@ -7,30 +7,25 @@ class UsersAdapter {
     return fetch(this.baseUrl).then(response => response.json())
   }
 
-  // deleteUser(noteId) {
-  //   const deleteUrl = `${this.baseUrl}/${noteId}`
-  //   const noteDeleteParams = {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type':'application/json'
-  //     }
-  //   }
-  //   return fetch(deleteUrl, noteDeleteParams).then(response => response.json())
-  // }
-
   createUser(body) {
     const userCreateParams = {
       method: 'POST',
       headers: {
         'Content-Type':'application/json'
       },
-      body: JSON.stringify({body})
+      body: JSON.stringify(body)
     }
     return fetch(this.baseUrl, userCreateParams).then(resp => resp.json())
+    .then((resp) => {
+      let user = new User(resp)
+      document.querySelector('.lightbox').remove()
+      app.map = new Map(user)
+      app.map.fetchAndLoadMarkers()
+      })
   }
 
   addUserRestaurant(body) {
-    
+
   }
 
 }

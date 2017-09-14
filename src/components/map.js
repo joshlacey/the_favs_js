@@ -3,11 +3,7 @@
 class Map {
   constructor (user={}) {
     this.user = user
-    if(user.email !== undefined){
-      this.restaurants = user.restaurants
-    } else {
-      this.restaurants = []
-    }
+    this.restaurants = []
     this.adapter = new RestaurantsAdapter()
     this.geocoder = this.createGeoCoder()
 
@@ -47,6 +43,7 @@ class Map {
     this.restaurants = []
     if(this.user.email){
       this.initMap()
+      this.user.restaurants.forEach(r =>{this.renderOnMap(r)})
     } else {
       this.adapter.getRestaurants()
         .then(restaurantsJSON => {restaurantsJSON.forEach(r => app.map.renderOnMap(r))})

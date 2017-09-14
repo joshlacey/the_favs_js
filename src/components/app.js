@@ -8,6 +8,17 @@ class App {
 
   }
 
+  initializeFunctions() {
+    let login = document.getElementById('login')
+    login.addEventListener('submit', this.initializeMap)
+    document.addEventListener('click', function() {
+      if(event.target.classList.contains("delete_restaurant")) {
+        app.map.deleteRestaurant(event.target.parentElement.dataset.rest_id, event)
+      }
+    })
+    this.loadUsers()
+  }
+
   addEventListeners(){
     document.body.addEventListener('submit', function() {
       event.preventDefault()
@@ -21,6 +32,8 @@ class App {
           app.map.addRestaurant(event)
       }
     })
+    let createAccountButton = document.querySelector('.createAccount')
+    createAccountButton.addEventListener('click', () => { this.insertLightbox(this.createAccount)})
 }
 
   loadUsers() {
@@ -30,17 +43,9 @@ class App {
       .catch( () => alert('The server does not appear to be running') )
   }
 
-  initializeFunctions() {
-    let login = document.getElementById('login')
-    login.addEventListener('submit', this.initializeMap)
-    document.addEventListener('click', function() {
-    if(event.target.classList.contains("delete_restaurant")) {
-      app.map.deleteRestaurant(event.target.parentElement.dataset.rest_id, event)
-    }
-  })
-    this.loadUsers()
-  }
 
+
+//initialize Map if there is a user login.
   initializeMap() {
     event.preventDefault()
     if(event.target.children[0].value !== ""){
@@ -56,5 +61,42 @@ class App {
     }
   }
 
+  insertLightbox(contentCallback) {
+    let lightbox = document.createElement('div')
+    lightbox.classList += "lightbox"
+    let container = document.querySelector('.container')
+    lightbox.appendChild(contentCallback())
+    container.appendChild(lightbox)
+  }
+
+  createAccount() {
+    var div = document.createElement('div')
+    var button = document.createElement('button')
+    button.setAttribute('class', "removeLightbox")
+    button.innerHTML = "X"
+    var form = document.createElement('form')
+    form.innerHTML = `<input class="yourEmail" placeholder="Your Email"><br>
+    <input class="yourCity" placeholder= "Your City"><br>
+    <button type="submit">Submit</button>`
+    button.addEventListener('click', function() {document.querySelector('.lightbox').remove()})
+    form.addEventListener('submit', app.createUserJSON)
+    div.append(button)
+    div.append(form)
+    return div
+  }
+
+  createUserJSON() {
+    event.preventDefault()
+    var email = event.target.querySelector('.yourEmail').value
+    var city = event.target.querySelector('.yourCity').value
+    var restaurants = app.map.restaurants
+    if(email !== "" && city !== "") {
+      let body = {email, city, restaurants}
+      app.adapter.createUser(body)
+    } else {
+      alert("Please enter your name and city!")
+    }
+
+  }
 
   }
