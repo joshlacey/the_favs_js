@@ -6,8 +6,8 @@ class Map {
     this.restaurants = []
     this.adapter = new RestaurantsAdapter()
     this.geocoder = this.createGeoCoder()
-
   }
+
 
   createGeoCoder() {
     this.initMap()
@@ -42,13 +42,14 @@ class Map {
     this.setMapOnAll(null)
     this.restaurants = []
     if(this.user.email){
-      this.initMap()
+      //this.initMap()
       this.user.restaurants.forEach(r =>{this.renderOnMap(r)})
     } else {
       this.adapter.getRestaurants()
         .then(restaurantsJSON => {restaurantsJSON.forEach(r => app.map.renderOnMap(r))})
         .catch( () => alert('The server does not appear to be running') )
     }
+    //goog.forEach{g => {g.remove()}}
   }
 
   initMap() {
@@ -56,11 +57,26 @@ class Map {
       //assign the map variable to a google maps object
       googleMap = new google.maps.Map(document.getElementById('mapDiv'), {
         zoom: 4,
-        center: uluru
+        center: uluru,
+        styles: styling,
+        mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID]
+        }, // here´s the array of controls
+        disableDefaultUI: true, // a way to quickly hide all controls
+        mapTypeControl: true,
+        scaleControl: true,
+        zoomControl: true,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.LARGE
+        },
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       })
+      var container = document.querySelector('.container')
+      var something = document.createElement('div')
+      something.setAttribute('style', 'height: 24px; grid-column: 1/4; grid-row: 4; z-index: 30; background-color: white')
+      container.appendChild(something)
+
   }
-
-
 
   renderOnMap(rest){
         let restaurant = new Restaurant(rest)
