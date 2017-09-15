@@ -42,7 +42,6 @@ class Map {
     this.setMapOnAll(null)
     this.restaurants = []
     if(this.user.email){
-      //this.initMap()
       this.user.restaurants.forEach(r =>{this.renderOnMap(r)})
     } else {
       this.adapter.getRestaurants()
@@ -81,7 +80,13 @@ class Map {
   renderOnMap(rest){
         let restaurant = new Restaurant(rest)
         this.restaurants.push(restaurant)
-        let dishes = restaurant.renderDishes()
+        let dishes
+        if (app.map.user.email){
+          dishes = restaurant.renderObjectDishes()
+        } else {
+          dishes = restaurant.renderDishes()
+        }
+        // let dishes = restaurant.renderDishes()
         let marker;
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" style="color: #000000; height: 300px">
@@ -101,6 +106,7 @@ class Map {
           marker.addListener('click', function() { infowindow.open(googleMap, marker) })
           markerArray.push(marker)
   }
+
 
 
 
