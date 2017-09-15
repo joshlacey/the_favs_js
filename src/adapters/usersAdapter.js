@@ -39,9 +39,9 @@ class UsersAdapter {
   return fetch( "http://localhost:3000/api/v1/users" + "/" + userId , userUpdateParams).then(resp => resp.json())
 }
 
-getUser(userId) {
-  return fetch(this.baseUrl + "/" + userId).then(resp => resp.json())
-}
+// getUser(userId) {
+//   return fetch(this.baseUrl + "/" + userId).then(resp => resp.json())
+// }
 
 // deleteUserRestaurant(userId, body) {
 //   const userUpdateParams = {
