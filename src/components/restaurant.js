@@ -37,10 +37,19 @@ class Restaurant {
   }
 
 renderObjectDishes(){
-  let dishes = app.map.user.dishes.map(function(dish){
-    return `<li>${dish.name}</li>`
-  })
-  return dishes.join("")
+  if (this.dishes){
+    let dishes = this.dishes.map(function(dish){
+      return `<li>${dish.name}</li>`
+      })
+      return dishes.join("")
+  }else {
+    return ""
+  }
+  // let dishes = app.map.user.dishes.map(function(dish){
+  //   return `<li>${dish.name}</li>`
+  // })
+  // return dishes.join("")
+
 }
 
 

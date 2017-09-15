@@ -81,7 +81,7 @@ class Map {
         let restaurant = new Restaurant(rest)
         this.restaurants.push(restaurant)
         let dishes
-        if (app.map.user.email){
+        if (app.map.user.email && restaurant.dishes){
           dishes = restaurant.renderObjectDishes()
         } else {
           dishes = restaurant.renderDishes()
