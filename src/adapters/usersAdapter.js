@@ -34,11 +34,24 @@ class UsersAdapter {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(body)
+    body: JSON.stringify({"restaurant" : body })
   }
-  return fetch(`${this.baseURL}/${userId}`, userUpdateParams).then(resp => resp.json())
-  .then(resp => {
-    debugger
-  })
+  return fetch( "http://localhost:3000/api/v1/users" + "/" + userId , userUpdateParams).then(resp => resp.json())
 }
+
+getUser(userId) {
+  return fetch(this.baseUrl + "/" + userId).then(resp => resp.json())
+}
+
+// deleteUserRestaurant(userId, body) {
+//   const userUpdateParams = {
+//   method: 'DELETE',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({"restaurant" : body })
+// }
+// return fetch( "http://localhost:3000/api/v1/users" + "/" + userId , userUpdateParams).then(resp => resp.json())
+// }
+
 }

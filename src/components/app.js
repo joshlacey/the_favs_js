@@ -55,6 +55,7 @@ class App {
       if(app.users.find(userObj => userObj.email === email) !== undefined) {
         let user = app.users.find(userObj => userObj.email === email)
         app.map = new Map(user)
+        app.map.fetchAndLoadMarkers()
       } else {
         alert('The user does not exist')
       }
@@ -73,10 +74,13 @@ class App {
 
   createAccount() {
     var div = document.createElement('div')
+    div.setAttribute('class', "create-user-box")
     var button = document.createElement('button')
     button.setAttribute('class', "removeLightbox")
     button.innerHTML = "X"
     var form = document.createElement('form')
+    form.append(button)
+    form.setAttribute('class', 'create-user-form')
     form.innerHTML = `<input class="yourEmail" placeholder="Your Email"><br>
     <input class="yourCity" placeholder= "Your City"><br>
     <button type="submit">Submit</button>`

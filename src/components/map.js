@@ -18,6 +18,7 @@ class Map {
     this.setMapOnAll(null)
     markerArray = []
     this.restaurants = []
+    this.user.restaurants = []
     this.adapter.deleteRestaurant(restId).then((v) => {this.fetchAndLoadMarkers()})
   }
 
@@ -65,9 +66,6 @@ class Map {
         let restaurant = new Restaurant(rest)
         this.restaurants.push(restaurant)
         let dishes = restaurant.renderDishes()
-        // let dishes = restaurant.list_of_dishes.forEach(function(dish){
-        //   dish.name
-        // })
         let marker;
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" style="color: #000000; height: 300px">

@@ -15,7 +15,7 @@ class RestaurantsAdapter {
         'Content-Type':'application/json'
       }
     }
-    return fetch(deleteUrl, RestaurantDeleteParams).then(response => response.json())
+    return fetch(deleteUrl, RestaurantDeleteParams).then(response => response.json() ).then((r)=> console.log(r))
   }
 
   createRestaurant(restaurant) {
@@ -26,7 +26,10 @@ class RestaurantsAdapter {
       },
       body: JSON.stringify(restaurant)
     }
-    return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json()).then((json) => {app.map.renderOnMap(json)})
+    return fetch(this.baseUrl, RestaurantCreateParams).then(resp => resp.json())
+    .then((json) => {app.map.renderOnMap(json); if(app.map.user.email){app.adapter.updateUser(app.map.user.id, json)}})
   }
 
 }
+
+// if(app.map.user.email){updateUser(app.map.user.id, json )}
