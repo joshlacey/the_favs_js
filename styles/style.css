@@ -129,7 +129,7 @@ h1 {
   color: #000000;
   min-height: 200px;
   text-align: center;
-  margin-left: 10%
+  /*margin-left: 10%*/
 }
 
 .info-window > button:first-child {
@@ -144,7 +144,10 @@ button.delete_restaurant {
   margin-top: 10px;
 }
 
-
+/*.info-window > li {
+  list-style: none;
+  text-align: left;
+}*/
 
 /*`<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" class="info-window" >
 <h2>${restaurant.name}<h2>
