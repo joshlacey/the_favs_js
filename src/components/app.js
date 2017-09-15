@@ -56,6 +56,13 @@ class App {
         let user = app.users.find(userObj => userObj.email === email)
         app.map = new Map(user)
         app.map.fetchAndLoadMarkers()
+        //document.getElementById('email').value = ""
+        let div = document.createElement('div')
+        div.setAttribute('style', 'justify-content: start;')
+        div.innerHTML = `<p class="email">${email}</p>`
+        document.getElementById('login').replaceWith(div)
+        document.getElementById('createAcc').innerHTML = ""
+
       } else {
         alert('The user does not exist')
       }
@@ -68,6 +75,11 @@ class App {
     let lightbox = document.createElement('div')
     lightbox.classList += "lightbox"
     let container = document.querySelector('.container')
+    var button = document.createElement('button')
+    button.setAttribute('class', "removeLightbox")
+    button.innerHTML = "X"
+    button.addEventListener('click', function() {document.querySelector('.lightbox').remove()})
+    lightbox.appendChild(button)
     lightbox.appendChild(contentCallback())
     container.appendChild(lightbox)
   }
@@ -75,18 +87,13 @@ class App {
   createAccount() {
     var div = document.createElement('div')
     div.setAttribute('class', "create-user-box")
-    var button = document.createElement('button')
-    button.setAttribute('class', "removeLightbox")
-    button.innerHTML = "X"
     var form = document.createElement('form')
-    form.append(button)
+    //form.append(button)
     form.setAttribute('class', 'create-user-form')
     form.innerHTML = `<input class="yourEmail" placeholder="Your Email"><br>
     <input class="yourCity" placeholder= "Your City"><br>
     <button type="submit">Submit</button>`
-    button.addEventListener('click', function() {document.querySelector('.lightbox').remove()})
     form.addEventListener('submit', app.createUserJSON)
-    div.append(button)
     div.append(form)
     return div
   }
