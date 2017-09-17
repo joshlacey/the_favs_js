@@ -31,7 +31,7 @@ class Restaurant {
 
   renderDishes(){
     let dishes = this.dishes.map(function(dish){
-      return `<li>${dish.name}</li>`
+      return `<li class="listitem">${dish.name}</li>`
     })
     return dishes.join("")
   }

@@ -30,7 +30,8 @@ class Map {
 
   addRestaurant() {
     let name = event.target.children[0].value
-    app.map.geocoder.geocode( { 'address': event.target.children[1].value }, function(results, status) {
+    let addr = event.target.children[1].value
+    app.map.geocoder.geocode( { 'address': name + " " + addr}, function(results, status) {
         let address = results[0].formatted_address
         let latitude = results[0].geometry.location.lat()
         let longitude = results[0].geometry.location.lng()

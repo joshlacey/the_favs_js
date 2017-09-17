@@ -144,6 +144,11 @@ button.delete_restaurant {
   margin-top: 10px;
 }
 
+.listitem {
+  list-style: none;
+  text-align: left;
+}
+
 /*.info-window > li {
   list-style: none;
   text-align: left;
