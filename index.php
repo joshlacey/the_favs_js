@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flatiron Faves</title>
+    <title>The Favs</title>
+    <link rel="shortcut icon" href="/img/red-pushpin.png" />
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
   </head>
