@@ -2,6 +2,8 @@
 
 ![screen shot 2017-10-01 at 4 11 53 pm](https://user-images.githubusercontent.com/26423636/31058645-fdbe60f2-a6c4-11e7-810c-34ae6487e32b.png)
 
+[View Live Demo](https://the-favs.herokuapp.com/)
+
 * The Favs is an app developed using the Google Maps Api. It allows users to type in a restaurant name and a general location an returns a marker for that restaurant on a map. The User can then click on the marker to see more information about the restaurant and also add dishes to the restaurant. The user can create an account to save their own markers.
 
 * This frontend was built with Vanilla Javascript using ES6 class syntax. The source folder is broken into two files. The adapters folder handles all of the methods used to make JSON requests to the Rails Api. The components folder separates out the responsibilities of each component into a tree, top level is index.js (located outside this folder), then app controls the map, restaurant, and user components.
@@ -10,6 +12,6 @@
 
 ## Setup
 
-* Prerequisites: Create a Google Maps Api Key https://developers.google.com/maps/documentation/javascript/get-api-key and place in the index.html file on line 38 where it says `[YOUR_KEY_HERE]`. Follow Rails Api setup instructions at https://github.com/joshlacey/the_favs_rr .
+* Prerequisites: Create a Google Maps Api Key https://developers.google.com/maps/documentation/javascript/get-api-key make sure to set a global environment variable called 'GOOGLE_MAP_API_KEY' and set it equal to your api key. Follow Rails Api setup instructions at https://github.com/joshlacey/the_favs_rr .
 
 * Installing: Make sure rails server is running and open index.html file.
