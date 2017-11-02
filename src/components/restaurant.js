@@ -45,14 +45,9 @@ renderObjectDishes(){
   }else {
     return ""
   }
-  // let dishes = app.map.user.dishes.map(function(dish){
-  //   return `<li>${dish.name}</li>`
-  // })
-  // return dishes.join("")
+
 
 }
 
 
 }
-
-let red_lob = {name: "red lobster", address: "as;dlfkjas;ldfkj", image_url: "asdl;fasdf", description: "tasty", latitude: 40, longitude: -70}

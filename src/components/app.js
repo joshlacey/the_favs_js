@@ -56,7 +56,6 @@ class App {
         let user = app.users.find(userObj => userObj.email === email)
         app.map = new Map(user)
         app.map.fetchAndLoadMarkers()
-        //document.getElementById('email').value = ""
         let div = document.createElement('div')
         div.setAttribute('style', 'justify-content: start;')
         div.innerHTML = `<p class="email">${email}</p>`
@@ -88,7 +87,6 @@ class App {
     var div = document.createElement('div')
     div.setAttribute('class', "create-user-box")
     var form = document.createElement('form')
-    //form.append(button)
     form.setAttribute('class', 'create-user-form')
     form.innerHTML = `<input class="yourEmail" placeholder="Your Email"><br>
     <input class="yourCity" placeholder= "Your City"><br>

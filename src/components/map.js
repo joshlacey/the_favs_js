@@ -53,7 +53,6 @@ class Map {
         .then(restaurantsJSON => {restaurantsJSON.forEach(r => app.map.renderOnMap(r))})
         .catch( () => alert('The server does not appear to be running') )
     }
-    //goog.forEach{g => {g.remove()}}
   }
 
   initMap() {
@@ -91,9 +90,7 @@ class Map {
         } else {
           dishes = restaurant.renderDishes()
         }
-        // let dishes = restaurant.renderDishes()
         let marker;
-        //let iconBase = 'https://maps.google.com/mapfiles/kml/pushpin/';
         let infowindow = new google.maps.InfoWindow({
           content: `<div data-rest_id = ${restaurant.restId} id="info_${restaurant.restId}" class="info-window" >
           <h2>${restaurant.name}</h2>
