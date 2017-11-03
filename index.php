@@ -35,16 +35,16 @@
 
     </div>
 
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=<?php echo getenv('GOOGLE_MAP_API_KEY')?>&callback=init">
-    </script>
+    <script type="text/javascript" src="src/index.js"></script>
+    <script type="text/javascript" src="src/components/app.js"></script>
     <script type="text/javascript" src="src/components/map.js"></script>
+    <script type="text/javascript" src="src/components/restaurant.js"></script>
     <script type="text/javascript" src="src/adapters/restaurantsAdapter.js"></script>
     <script type="text/javascript" src="src/adapters/usersAdapter.js"></script>
     <script type="text/javascript" src="src/adapters/dishesAdapter.js"></script>
     <script type="text/javascript" src="src/components/user.js"></script>
-    <script type="text/javascript" src="src/components/restaurant.js"></script>
-    <script type="text/javascript" src="src/components/app.js"></script>
-    <script type="text/javascript" src="src/index.js"></script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<?php echo getenv('GOOGLE_MAP_API_KEY')?>&callback=init">
+    </script>
   </body>
 </html>
